@@ -60,8 +60,8 @@ This is a **learning and experimentation project** that implements a Convolution
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd <project-directory>
+git clone https://github.com/77AXEL/Digit-Recognizer
+cd Digit-Recognizer
 ```
 
 2. **Extract the dataset**:
