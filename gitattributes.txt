@@ -1,4 +1,3 @@
 *.py linguist-language=Python
-*.pyx linguist-language=Cython
-*.c linguist-language=C linguist-detectable=true
+*.f90 linguist-language=Fortran linguist-detectable=true
 *.cpp linguist-language=C++ linguist-detectable=true
