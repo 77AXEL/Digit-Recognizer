@@ -5,6 +5,77 @@ A handwritten digit recognition system built from scratch using Python, with per
   <img src="assets/animation.gif">
 </p>
 
+## 💡 Learning the CNN Fundamentals
+
+This section provides visual examples of the fundamental operations within the Convolutional Neural Network architecture used in this project. Understanding these low-level processes is key to appreciating the performance optimizations explored here.
+
+### Convolutional Layer: Feature Extraction
+
+The **Convolutional Layer** applies a set of **filters** (kernels) to the input image. Each filter scans the image, performing a dot product between the filter weights and the small portion of the image it's currently over, generating a single feature map. This process allows the network to automatically learn hierarchical features, such as edges, textures, and ultimately, parts of a digit.
+<p align="center">
+  <img src="assets/filters.gif" height=300 width=300>
+</p>
+
+---
+
+### ReLU Activation: Introducing Non-Linearity
+
+The **Rectified Linear Unit (ReLU)** is a non-linear activation function applied element-wise to the output of the convolutional layer and the dot product. It simply converts all negative input values to zero while keeping positive values unchanged.
+<p align="center">
+  <img src="assets/ReLU.png" height=300 width=300>
+</p>
+
+$$
+\text{ReLU}(x) = \max(0, x)
+$$
+
+This non-linearity is crucial because it allows the network to learn more complex patterns than would be possible with only linear transformations.
+
+---
+
+### Max Pooling: Downsampling and Invariance
+
+**Max Pooling** is a downsampling operation that reduces the spatial dimensions (height and width) of the feature maps. It slides a filter (e.g., $2 \times 2$) over the feature map and only keeps the maximum value within that region.
+<p align="center">
+  <img src="assets/maxpooling.gif" height=300 width=300>
+</p>
+
+$$
+\text{Output}(i, j) = \max_{x, y \in \text{Region}(i, j)} \text{Input}(x, y)
+$$
+
+This operation has two main benefits:
+1.  **Reduces the number of parameters** and computation, which helps prevent overfitting.
+2.  Provides **translational invariance**, meaning the network can still recognize a digit even if its position shifts slightly in the input image.
+
+---
+
+### Softmax Layer: Probability Distribution
+
+The final layer in the network is the **Softmax Layer**. It takes the output of the final fully-connected layer (the logits) and converts them into a probability distribution over the $K$ classes (where $K=10$ for the digits 0-9). The output is a vector where each element represents the probability that the input image belongs to a specific class. The sum of all probabilities is $1$.
+<p align="center">
+  <img src="assets/softmax.png" height=300 width=300>
+</p>
+
+$$
+\sigma(\mathbf{z})_i = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}} \quad \text{for } i = 1, \dots, K
+$$
+
+The index with the highest probability is the predicted digit.
+
+---
+
+### CNN Architecture Overview
+
+The specific **architecture** for the digit recognition task typically follows a pattern of alternating Convolutional and Pooling layers, followed by one or more Fully Connected layers at the end. This diagram illustrates the general flow from the input image to the final classification.
+<p align="center">
+  <img src="assets/arch.jpg" height=400 width=400>
+</p>
+
+The architecture used in this project is implemented from scratch, demonstrating the custom logic for each of these stages in both the forward and backward (training) passes.
+
+---
+
 ## 📋 Overview
 
 This is a **learning and experimentation project** that implements a Convolutional Neural Network (CNN) for digit recognition without relying on high-level deep learning frameworks. The project explores low-level optimization techniques and demonstrates how to integrate compiled code with Python for better performance.
