@@ -194,6 +194,8 @@ def backward(a, z, ytrue, yhat, w, layers_num):
 def predict(image, w, b, layers_num, classes):
     inp = process_image(image)
     yhat, a, z = forward(inp, w, b, layers_num)
+    if -np.sum(yhat * np.log(yhat + 1e-12)) > 1.5:
+        return None
     return classes[np.argmax(yhat)]
 
 def save(path, w, b, classes, input_labels, layers):
@@ -225,5 +227,6 @@ def test(dataset_path, w, b, layers_num, classes):
         i += 1
         print(f"Number {cls}: {s/1000}")
         total += s/1000
+
 
     print("Total:", total/10)
