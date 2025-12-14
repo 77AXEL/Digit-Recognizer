@@ -5,7 +5,7 @@ A handwritten digit recognition system built from scratch using Python, with per
   <img src="assets/animation.gif">
 </p>
 
-- [Notebook](./lab.ipynb)
+- [Project Notebook](./lab.ipynb)
 
 ## 💡 Learning the CNN Fundamentals
 
