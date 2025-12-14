@@ -5,6 +5,8 @@ A handwritten digit recognition system built from scratch using Python, with per
   <img src="assets/animation.gif">
 </p>
 
+- [Notebook](./lab.ipynb)
+
 ## 💡 Learning the CNN Fundamentals
 
 This section provides visual examples of the fundamental operations within the Convolutional Neural Network architecture used in this project. Understanding these low-level processes is key to appreciating the performance optimizations explored here.
