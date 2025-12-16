@@ -137,16 +137,24 @@ git clone https://github.com/77AXEL/Digit-Recognizer
 cd Digit-Recognizer
 ```
 
-2. **Extract the dataset**:
+2. **Extract the dataset (mnist)**:
 ```bash
 unzip data.zip
 ```
-This step is required before training the model.
+> - This step is required before training the model.
 
 3. Install Python dependencies:
 ```bash
 pip install numpy scipy jupyter
 ```
+
+4. Optional **(for max performance or Python compatibility issues):**
+```bash
+cd lib
+make
+```
+> - Rebuilds `funcs.dll` and `module.cp38-X.pyd` for your CPU, improving speed and avoiding issues if your Python isn’t version 3.8.
+> - **Note:** Requires `gfortran` and `g++` compilers. On Windows, you can install [MinGW](https://www.mingw-w64.org/downloads/#mingw-w64-builds) and use `mingw-32make`.
 
 ### Running the Project
 
@@ -175,19 +183,18 @@ The project uses a convolutional neural network architecture implemented from sc
 
 ## 📊 Dataset
 
-The training dataset is provided in `data.zip` and must be extracted before use. The dataset contains handwritten digit images for training and validation.
+The training dataset is provided in `data.zip` and must be **extracted** before use. The dataset contains **mnist** handwritten digit images for training and validation.
 
 ## 🎓 Learning Objectives
 
 This project demonstrates:
 - Low-level neural network implementation
-- Integration of multiple programming languages (Python, C++, Fortran)
 - Performance optimization techniques
 - Understanding of CNN fundamentals without frameworks
 
 ## 📝 License
 
-See the `LICENSE` file for details.
+See the [LICENSE](./LICENSE) file for details.
 
 ## ⚠️ Note
 
