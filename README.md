@@ -154,7 +154,7 @@ cd lib
 make
 ```
 > - Rebuilds `funcs.dll` and `module.cp38-X.pyd` for your CPU, improving speed and avoiding issues if your Python isn’t version 3.8.
-> - **Note:** Requires `gfortran` and `g++` compilers. On Windows, you can install [MinGW](https://www.mingw-w64.org/downloads/#mingw-w64-builds) and use `mingw-32make`.
+> - **Note:** Requires `gfortran` and `g++` compilers. On Windows, you can install [MinGW](https://www.mingw-w64.org/downloads/#mingw-w64-builds) and use `mingw32-make`.
 
 ### Running the Project
 
