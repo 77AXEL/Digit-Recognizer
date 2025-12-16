@@ -1,6 +1,6 @@
 # Digit Recognition CNN from Scratch
 
-A handwritten digit recognition system built from scratch using Python, with performance-optimized implementations using C extensions, Fortran, and custom DLLs.
+A handwritten digit recognition system built from scratch using Python, with performance-optimized implementations using C extensions, Fortran, OpenBLAS and custom DLLs.
 <p align="center">
   <img src="assets/animation.gif">
 </p>
@@ -66,6 +66,15 @@ $$
 The index with the highest probability is the predicted digit.
 
 ---
+### Optimization and Performance
+
+* **OpenBLAS**: Utilized for high-performance matrix multiplication, which is critical for the compute-intensive dense layers.
+* **Optimized C++ DLLs**: Core operations such as ReLU, Softmax, loss computation, weights/biases updates, and L2 regularization are implemented in C++ and exposed to Python via DLLs.
+* **Fortran C Extension**: Vector addition, a frequent and computation-heavy operation, is implemented in Fortran and integrated into Python through a C extension.
+
+> This approach effectively removes Python bottlenecks by offloading intensive numerical computations and loop-heavy logic to compiled code.
+
+---
 
 ### CNN Architecture Overview
 
@@ -92,34 +101,6 @@ This is a **learning and experimentation project** that implements a Convolution
 - **Custom compiled modules** loaded via ctypes
 - **Complete training pipeline** for digit classification
 
-## 🗂️ Project Structure
-
-```
-├── assets/
-│   └── animation.gif          # Neural network visualization
-├── lib/
-│   ├── funcs.cpp              # C++ source for custom functions
-│   ├── funcs.dll              # Compiled C DLL (softmax, ReLU, loss, updates)
-│   ├── funcs.exp
-│   ├── funcs.lib
-│   ├── funcs.pdb
-│   ├── libgcc_s_seh-1.dll     # GCC runtime library
-│   ├── libgfortran-5.dll      # Fortran runtime library
-│   ├── libopenblas.dll        # OpenBLAS for tensor operations
-│   ├── libquadmath-0.dll      # Quadmath library
-│   ├── libmodule.V4URNAUZAJSVN6KEXZGZ...dll  # Compiled Fortran DLL
-│   ├── module.cp38-win_amd64.pyd  # Fortran f2py compiled module
-│   └── module.f90                 # Fortran source for vector operations
-├── models/
-│   └── model.bin              # Saved model weights
-├── data.zip                   # Training dataset (needs extraction)
-├── gitattributes.txt
-├── lab.ipynb                  # Main training notebook
-├── LICENSE
-├── modules.py                 # Python module definitions
-└── README.md
-```
-
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -132,27 +113,33 @@ This is a **learning and experimentation project** that implements a Convolution
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/77AXEL/Digit-Recognizer
 cd Digit-Recognizer
 ```
 
 2. **Extract the dataset (mnist)**:
+
 ```bash
 unzip data.zip
 ```
+
 > - This step is required before training the model.
 
 3. Install Python dependencies:
+
 ```bash
 pip install numpy scipy jupyter
 ```
 
 4. Optional **(for max performance or Python compatibility issues):**
+
 ```bash
 cd lib
 make
 ```
+
 > - Rebuilds `funcs.dll` and `module.cp38-X.pyd` for your CPU, improving speed and avoiding issues if your Python isn’t version 3.8.
 > - **Note:** Requires `gfortran` and `g++` compilers. On Windows, you can install [MinGW](https://www.mingw-w64.org/downloads/#mingw-w64-builds) and use `mingw32-make`.
 
