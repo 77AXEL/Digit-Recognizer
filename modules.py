@@ -132,10 +132,10 @@ def process_image(input_image):
     arr = np.array(img) / 255.0
     channels = (arr[:, :, 0], arr[:, :, 1], arr[:, :, 2])
     feature_maps = []
-    for filter in filters:
+    for kernel in filters:
         feature_map = []
         for channel in channels:
-            out = convolve2d(channel, filter, mode='same', boundary='fill', fillvalue=0)
+            out = convolve2d(channel, kernel, mode='same', boundary='fill', fillvalue=0)
             feature_map.append(out.copy())
         feature_maps.append(np.sum(np.stack(feature_map, axis=0), axis=0))
     feature_maps = np.stack(feature_maps, axis=0)
