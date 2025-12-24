@@ -1,8 +1,8 @@
 F_TARGET = module
 F_SRC    = module.f90
 
-CPP_DLL  = funcs.dll
-CPP_SRC  = funcs.cpp
+CPP_DLL  = optimized.dll
+CPP_SRC  = optimized.cpp
 
 .PHONY: all clean
 

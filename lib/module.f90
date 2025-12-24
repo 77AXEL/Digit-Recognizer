@@ -1,6 +1,6 @@
 module tensor
 contains
-  subroutine sum_vectors(V1, V2, T)
+  subroutine sum(V1, V2, T)
     implicit none
     real(8), intent(in)  :: V1(:)
     real(8), intent(in)  :: V2(:)
@@ -17,5 +17,5 @@ contains
     do i = 1, n
         T(i) = V1(i) + V2(i)
     end do
-  end subroutine sum_vectors
+  end subroutine sum
 end module tensor
