@@ -1,32 +1,53 @@
 import numpy as np
 import ctypes
+import psutil
 
 class tensor:
     def __init__(self):
         from lib import module
         self.module = module
         self.openblas = ctypes.cdll.LoadLibrary("./lib/libopenblas.dll")
-        self.openblas.cblas_dgemm.argtypes = [ctypes.c_int]*3 + [ctypes.c_int]*3 + [ctypes.c_double, ctypes.POINTER(ctypes.c_double), ctypes.c_int, ctypes.POINTER(ctypes.c_double), ctypes.c_int, ctypes.c_double, ctypes.POINTER(ctypes.c_double), ctypes.c_int]
-        self.openblas.cblas_dgemm.restype = None
+        self.openblas.cblas_dgemv.argtypes = [
+            ctypes.c_int,
+            ctypes.c_int,
+            ctypes.c_int,
+            ctypes.c_int,
+            ctypes.c_double,
+            ctypes.POINTER(ctypes.c_double),
+            ctypes.c_int,
+            ctypes.POINTER(ctypes.c_double),
+            ctypes.c_int,
+            ctypes.c_double,
+            ctypes.POINTER(ctypes.c_double),
+            ctypes.c_int
+        ]
+        self.openblas.cblas_dgemv.restype = None
         self.openblas.openblas_set_num_threads.argtypes = [ctypes.c_int]
         self.openblas.openblas_set_num_threads.restype = None
-        self.openblas.openblas_set_num_threads(16)
+        self.openblas.openblas_set_num_threads(psutil.cpu_count(logical=False))
 
     def dot(self, A, B):
         A = np.asarray(A, dtype=np.float64)
         B = np.asarray(B, dtype=np.float64)
         K = A.size
         K2, N = B.shape
-        C = np.zeros((1, N), dtype=np.float64)
-        self.openblas.cblas_dgemm(
-            101, 111, 111,
-            1, N, K,
+        C = np.zeros(N, dtype=np.float64)
+        self.openblas.cblas_dgemv(
+            101,
+            112,
+            K2,
+            N,
             1.0,
-            A.ctypes.data_as(ctypes.POINTER(ctypes.c_double)), K,
-            B.ctypes.data_as(ctypes.POINTER(ctypes.c_double)), N, 
-            0.0, 
-            C.ctypes.data_as(ctypes.POINTER(ctypes.c_double)), N)
-        return C.ravel()
+            B.ctypes.data_as(ctypes.POINTER(ctypes.c_double)),
+            N,
+            A.ctypes.data_as(ctypes.POINTER(ctypes.c_double)),
+            1,
+            0.0,
+            C.ctypes.data_as(ctypes.POINTER(ctypes.c_double)),
+            1
+        )
+        
+        return C
 
     def sum(self, A, B):
         return self.module.tensor.sum(A, B)
