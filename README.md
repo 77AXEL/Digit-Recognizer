@@ -11,7 +11,7 @@ A handwritten digit recognition system built from scratch using Python, with per
   <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License">
 </p>
 
-- [Project Notebook](./lab.ipynb)
+- [Notebook Project](./lab.ipynb)
 
 ## 💡 Learning the CNN Fundamentals
 
