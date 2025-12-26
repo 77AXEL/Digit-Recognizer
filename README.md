@@ -3,7 +3,9 @@
 A handwritten digit recognition system built from scratch using Python, with performance-optimized implementations using C extensions, Fortran, OpenBLAS and custom DLLs.
 <p align="center">
   <img src="assets/animation.gif">
-  
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/Open_Source-Yes-red?style=flat-square" alt="Open Source">
   <img src="https://img.shields.io/badge/Platform-Windows-blue?style=flat-square" alt="Platform Support">
   <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License">
