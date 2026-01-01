@@ -1,9 +1,9 @@
 # Digit Recognition CNN from Scratch
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Open_Source-Yes-red?style=flat-square" alt="Open Source">
-  <img src="https://img.shields.io/badge/Platform-Windows-blue?style=flat-square" alt="Platform Support">
-  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License">
+  <img src="https://img.shields.io/badge/Open_Source-Yes-red" alt="Open Source">
+  <img src="https://img.shields.io/badge/Platform-Windows-blue" alt="Platform Support">
+  <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
 </p>
 
 A handwritten digit recognition system built from scratch using Python. This project demonstrates high-performance optimization by integrating C extensions, Fortran, and OpenBLAS with a custom Python CNN implementation.
