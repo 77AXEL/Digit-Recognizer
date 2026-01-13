@@ -12,7 +12,7 @@ A handwritten digit recognition system built from scratch using Python. This pro
   <img src="assets/animation.gif">
 </p>
 
-[Notebook](./lab.pynb)
+[Project Notebook](./lab.ipynb)
 
 ## 🎯 Key Features
 
